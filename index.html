@@ -254,7 +254,7 @@
   <div class="custom-cursor" id="cursor"></div>
   <div class="back-to-top" id="backToTop" onclick="scrollToTop()">🎵</div>
 
-  <form onsubmit="return validateForm(event)">
+  <form action="https://formspree.io/f/xqegwopp" method="POST">
     <img src="logo.jpg" class="form-logo" alt="Band Logo">
 
     <h2>Band Royal Stars</h2>
@@ -266,24 +266,24 @@
 
     <div class="form-group">
       <label for="fullname">Full Name: *</label>
-      <input type="text" id="fullname" placeholder="Enter your full name" required>
+      <input type="text" id="fullname" name="Full_Name" placeholder="Enter your full name" required>
     </div>
 
     <div class="form-group">
       <label for="email">Email Address: *</label>
-      <input type="email" id="email" placeholder="example@email.com" required>
+      <input type="email" id="email" name="Email" placeholder="example@email.com" required>
     </div>
 
     <div class="form-group">
       <label for="dob">Date of Birth: *</label>
-      <input type="date" id="dob" required>
+      <input type="date" id="dob" name="Date_Of_Birth" required>
     </div>
 
     <div class="form-group">
       <label for="phone">Phone Number (8 digits): *</label>
       <div class="phone-input-container">
         <div class="phone-prefix">+216</div>
-        <input type="tel" id="phone" placeholder="12345678" pattern="[0-9]{8}" required style="flex: 1;">
+        <input type="tel" id="phone" name="Phone_Number" placeholder="12345678" pattern="[0-9]{8}" required style="flex: 1;">
       </div>
     </div>
 
@@ -318,37 +318,37 @@
           <div class="custom-option" data-value="Zaghouan">Zaghouan</div>
         </div>
       </div>
-      <input type="hidden" id="selectedState" required>
+      <input type="hidden" id="selectedState" name="State" required>
     </div>
 
     <div class="form-group">
       <label for="career-start">Career Start Year: *</label>
-      <input type="number" id="career-start" placeholder="e.g., 2020" min="1980" max="2026" required>
+      <input type="number" id="career-start" name="Career_Start_Year" placeholder="e.g., 2020" min="1980" max="2026" required>
     </div>
 
     <div class="form-group">
       <label for="insta">Instagram Profile:</label>
-      <input type="url" id="insta" placeholder="https://instagram.com/username">
+      <input type="url" id="insta" name="Instagram_URL" placeholder="https://instagram.com/username">
     </div>
 
     <div class="form-group">
       <label for="fb">Facebook Profile:</label>
-      <input type="url" id="fb" placeholder="https://facebook.com/username">
+      <input type="url" id="fb" name="Facebook_URL" placeholder="https://facebook.com/username">
     </div>
 
     <div class="form-group">
       <label>Your Specialty: * (Select at least one)</label>
       <div class="specialty-options">
         <div class="specialty-item">
-          <input type="checkbox" id="spec-music" name="specialty" value="music" onchange="toggleMusicRole()">
+          <input type="checkbox" id="spec-music" name="specialty_Music" value="music" onchange="toggleMusicRole()">
           <label for="spec-music">Music</label>
         </div>
         <div class="specialty-item">
-          <input type="checkbox" id="spec-dance" name="specialty" value="dance">
+          <input type="checkbox" id="spec-dance" name="specialty_Dance" value="dance">
           <label for="spec-dance">Dance</label>
         </div>
         <div class="specialty-item">
-          <input type="checkbox" id="spec-theatre" name="specialty" value="theatre">
+          <input type="checkbox" id="spec-theatre" name="specialty_Theatre" value="theatre">
           <label for="spec-theatre">Theatre</label>
         </div>
       </div>
@@ -356,39 +356,26 @@
 
     <div class="form-group">
       <label id="role-label" for="role" style="color: rgba(223, 223, 223, 0.3);">If Music, what do you do?</label>
-      <input type="text" id="role" placeholder="e.g., Singer, Guitarist..." disabled>
+      <input type="text" id="role" name="Music_Role" placeholder="e.g., Singer, Guitarist..." disabled>
     </div>
 
     <div class="form-group checkbox-group consent-box">
-      <input type="checkbox" id="consent-files" onchange="toggleUploads()" style="width: 20px; height: 20px;">
+      <input type="checkbox" id="consent-files" name="Consent_To_Share_Media" value="Yes" style="width: 20px; height: 20px;">
       <label for="consent-files" style="margin-left: 10px; cursor: pointer; color: #a0aec0;">I agree to share my picture and video with Band Royal Stars. *</label>
     </div>
 
-    <div id="upload-section" class="hidden-section">
-      <div class="form-group">
-        <label>Upload Your Picture: *</label>
-        <div class="file-upload-wrapper">
-          <div class="custom-file-btn" id="pic-btn">📸 Choose Your Picture</div>
-          <input type="file" id="picture" accept="image/*" onchange="updateFileName('picture', 'pic-btn')">
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Upload a Video showing your talent: *</label>
-        <div class="file-upload-wrapper">
-          <div class="custom-file-btn" id="vid-btn">🎥 Choose Your Video</div>
-          <input type="file" id="talent-video" accept="video/*" onchange="updateFileName('talent-video', 'vid-btn')">
-        </div>
-      </div>
+    <div id="upload-section">
+      <p style="color: #dfb15b; font-size: 0.85rem;">Note: For the free plan, please upload links to your media in the motivation box below.</p>
     </div>
 
     <div class="form-group">
       <label for="motivation">Why do you want to join Band Royal Stars? *</label>
-      <textarea id="motivation" rows="4" placeholder="Tell us about your motivation..." maxlength="300" oninput="updateCharCount()" required></textarea>
+      <textarea id="motivation" name="Motivation" rows="4" placeholder="Tell us about your motivation..." maxlength="300" oninput="updateCharCount()" required></textarea>
       <div id="char-counter" class="char-count">0 / 300</div>
     </div>
 
     <div class="form-group" style="flex-direction: row; align-items: center; gap: 10px;">
-      <input type="checkbox" id="terms" required style="width: 20px; height: 20px;">
+      <input type="checkbox" id="terms" name="Agreed_To_Rules" value="Yes" required style="width: 20px; height: 20px;">
       <label for="terms" style="margin-bottom: 0; cursor: pointer; color: #a0aec0;">I agree to the band's rules. *</label>
     </div>
 
@@ -396,14 +383,6 @@
       <span>Submit Information</span>
     </button>
   </form>
-
-  <div id="successModal" class="success-modal">
-    <div class="modal-content">
-      <h3>🌟 Success! 🌟</h3>
-      <p>Welcome to the Royal Stars band. Your registration has been submitted.</p>
-      <button onclick="closeModal()">Close</button>
-    </div>
-  </div>
 
   <script>
     window.addEventListener('load', () => {
@@ -469,26 +448,12 @@
       }
     });
 
-    function toggleUploads() {
-      const consent = document.getElementById('consent-files');
-      document.getElementById('upload-section').style.display = consent.checked ? "block" : "none";
-    }
-
     function toggleMusicRole() {
       const specMusic = document.getElementById('spec-music');
       const roleInput = document.getElementById('role');
       const roleLabel = document.getElementById('role-label');
       roleInput.disabled = !specMusic.checked;
       roleLabel.style.color = specMusic.checked ? "#dfdfdf" : "rgba(223, 223, 223, 0.3)";
-    }
-
-    function updateFileName(inputId, btnId) {
-      const input = document.getElementById(inputId); 
-      const btn = document.getElementById(btnId);
-      if (input.files.length > 0) { 
-        btn.innerHTML = `🌟 ${input.files[0].name} (Selected!)`; 
-        btn.classList.add('selected'); 
-      }
     }
 
     window.addEventListener('scroll', () => {
@@ -500,14 +465,6 @@
     });
 
     function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
-
-    function validateForm(event) {
-      event.preventDefault();
-      document.getElementById('successModal').style.display = 'flex';
-      return false;
-    }
-
-    function closeModal() { document.getElementById('successModal').style.display = 'none'; }
   </script>
 </body>
 </html>
