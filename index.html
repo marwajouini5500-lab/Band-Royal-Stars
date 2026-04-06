@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Band Royal Stars</title>
+  <title>Royal Stars - Registration</title>
   
-  <link rel="icon" type="image/png" href="image.jpg">
+  <link rel="icon" type="image/jpeg" href="logo.jpg">
   
   <style>
     :root {
@@ -31,7 +31,6 @@
       cursor: none;
     }
 
-    /* إجبار المتصفح على تلوين الـ Checkboxes بالذهب */
     input[type="checkbox"] {
       accent-color: var(--gold-main) !important;
     }
@@ -84,10 +83,12 @@
     @keyframes slideIn { from { transform: translateY(-30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
     @keyframes goldGlitter { 0% { border-color: #dfb15b; } 100% { border-color: #fbf0b9; } }
 
+    /* اللوجو في أعلى يمين الـ Form */
     .form-logo {
       position: absolute; top: 45px; right: 45px; width: 70px; height: 70px;
       border-radius: 50%; border: 2px solid var(--gold-main); box-shadow: 0 0 15px var(--gold-main);
       background: transparent; transition: transform 0.3s ease;
+      object-fit: cover;
     }
     .form-logo:hover { transform: scale(1.05); }
 
@@ -112,8 +113,6 @@
     .waveform span:nth-child(6) { animation-delay: 0.5s; height: 100%; }
     .waveform span:nth-child(7) { animation-delay: 0.2s; height: 50%; }
     @keyframes wave { 0%, 100% { transform: scaleY(0.4); } 50% { transform: scaleY(1); } }
-    .waveform.active span { animation: waveFast 0.5s infinite alternate ease-in-out !important; }
-    @keyframes waveFast { 0% { transform: scaleY(0.2); } 100% { transform: scaleY(1.2); } }
 
     .form-group { margin-bottom: 22px; display: flex; flex-direction: column; position: relative; }
     label { font-size: 0.9rem; color: #dfdfdf; margin-bottom: 8px; font-weight: 600; letter-spacing: 0.5px; }
@@ -129,12 +128,13 @@
     }
     input:disabled { background: rgba(255, 255, 255, 0.02); border-color: rgba(223, 177, 91, 0.1); color: rgba(255, 255, 255, 0.2); }
 
-    /* الـ Dropdown المذهب والتصليح */
+    /* الـ Dropdown المذهب المصلح */
     .custom-select-wrapper { position: relative; width: 100%; }
     .select-trigger {
       background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(223, 177, 91, 0.3);
       border-radius: 8px; padding: 12px; color: #fff; font-size: 1rem;
       display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease;
+      cursor: pointer;
     }
     .select-trigger:after { content: '▼'; font-size: 0.8rem; color: var(--gold-main); transition: transform 0.3s ease; }
     .custom-select-wrapper.open .select-trigger:after { transform: rotate(180deg); }
@@ -142,7 +142,7 @@
     
     .custom-options {
       position: absolute; top: 100%; left: 0; right: 0; 
-      background: #0b1528 !important; /* إجبار اللون الكحلي الغامق */
+      background: #0b1528 !important; 
       border: 1px solid var(--gold-main);
       border-radius: 8px; margin-top: 5px; max-height: 250px; overflow-y: auto; z-index: 99; display: none;
       box-shadow: 0 10px 25px rgba(0,0,0,0.6);
@@ -151,8 +151,9 @@
     
     .custom-option { 
       padding: 12px; 
-      color: #ffffff !important; /* إجبار لون النص الأبيض */
+      color: #ffffff !important; 
       transition: all 0.2s ease; border-bottom: 1px solid rgba(223, 177, 91, 0.1); 
+      cursor: pointer;
     }
     .custom-option:hover { background: rgba(223, 177, 91, 0.2) !important; color: var(--gold-main) !important; }
     .custom-option.selected { background: var(--gold-gradient) !important; color: var(--navy-dark) !important; font-weight: bold; }
@@ -164,7 +165,7 @@
       display: flex; align-items: center; justify-content: center; min-width: 60px;
     }
 
-    /* تخصيص الـ Checkboxes كـ Tags مذهبة */
+    /* الـ Checkboxes كـ Tags */
     .specialty-options { display: flex; flex-direction: row; gap: 15px; flex-wrap: wrap; margin-top: 5px; }
     .specialty-item { position: relative; }
     .specialty-item input[type="checkbox"] { position: absolute; opacity: 0; width: 0; height: 0; }
@@ -172,7 +173,7 @@
       display: inline-block; background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(223, 177, 91, 0.3); border-radius: 20px;
       padding: 10px 25px; color: #cbd5e1; font-size: 0.95rem; font-weight: normal;
-      transition: all 0.3s ease; margin-bottom: 0;
+      transition: all 0.3s ease; margin-bottom: 0; cursor: pointer;
     }
     .specialty-item input[type="checkbox"]:checked + label {
       background: var(--gold-gradient); color: var(--navy-dark); font-weight: bold;
@@ -180,17 +181,16 @@
     }
     .specialty-item label:hover { background: rgba(223, 177, 91, 0.15); color: #fff; }
 
-    /* شكل تحميل الملفات المطور */
-    .file-upload-wrapper { position: relative; width: 100%; }
-    .file-upload-wrapper input[type="file"] { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; }
+    /* تحميل الملفات */
+    .file-upload-wrapper { position: relative; width: 100%; cursor: pointer; }
+    .file-upload-wrapper input[type="file"] { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
     .custom-file-btn {
       display: flex; align-items: center; justify-content: center;
       background: rgba(255, 255, 255, 0.03); border: 1px dashed rgba(223, 177, 91, 0.5);
       border-radius: 8px; padding: 18px; color: #a0aec0; font-size: 0.95rem; transition: all 0.3s ease;
     }
     .file-upload-wrapper:hover .custom-file-btn {
-      background: rgba(223, 177, 91, 0.08); border-color: var(--gold-main);
-      animation: pulseHover 1s infinite; color: #fff;
+      background: rgba(223, 177, 91, 0.08); border-color: var(--gold-main); color: #fff;
     }
     .custom-file-btn.selected { border-style: solid; border-color: var(--gold-main); background: rgba(223, 177, 91, 0.15); color: #fff; font-weight: bold; }
 
@@ -204,8 +204,9 @@
       text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease;
       margin-top: 25px; width: 100%; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       display: flex; justify-content: center; align-items: center; gap: 10px;
+      cursor: pointer;
     }
-    button[type="submit"]:hover { transform: translateY(-2px); box-shadow: 0 5px 25px rgba(223, 177, 91, 0.5); animation: pulseHover 1s infinite; }
+    button[type="submit"]:hover { transform: translateY(-2px); box-shadow: 0 5px 25px rgba(223, 177, 91, 0.5); }
 
     /* زر العودة للأعلى */
     .back-to-top {
@@ -213,17 +214,19 @@
       background: var(--gold-gradient); color: var(--navy-dark); border-radius: 50%;
       display: flex; justify-content: center; align-items: center;
       box-shadow: 0 5px 15px rgba(0,0,0,0.5); opacity: 0; visibility: hidden; transition: all 0.4s ease; z-index: 1000; font-weight: bold;
+      cursor: pointer;
     }
     .back-to-top.visible { opacity: 1; visibility: visible; }
     .back-to-top:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(223, 177, 91, 0.6); }
 
-    /* الماوس السحري والغليتر */
+    /* الماوس السحري */
     .custom-cursor {
       position: fixed; width: 12px; height: 12px; background: #dfb15b; border-radius: 50%;
       pointer-events: none; z-index: 9999; transform: translate(-50%, -50%);
       transition: width 0.3s, height 0.3s, background-color 0.3s, box-shadow 0.3s; box-shadow: 0 0 10px #dfb15b;
     }
     .custom-cursor.grow { width: 40px; height: 40px; background: rgba(223, 177, 91, 0.2); border: 1px solid #dfb15b; box-shadow: 0 0 20px rgba(223, 177, 91, 0.5); }
+    
     .glitter-particle {
       position: fixed; width: 5px; height: 5px; background: var(--gold-gradient); border-radius: 50%;
       pointer-events: none; z-index: 9998; animation: glitterFade 0.6s ease-out forwards; box-shadow: 0 0 5px #dfb15b;
@@ -234,7 +237,9 @@
     .modal-content { background: var(--navy-light); border: 2px solid var(--gold-main); border-radius: 15px; padding: 40px; text-align: center; max-width: 400px; box-shadow: 0 0 30px var(--gold-main); animation: modalShow 0.4s ease; }
     .modal-content h3 { color: var(--gold-main); font-family: 'Cinzel', serif; margin-bottom: 15px; font-size: 1.5rem; }
     .modal-content p { color: #fff; margin-bottom: 0; }
-    .modal-content button { background: var(--gold-gradient); color: var(--navy-dark); border: none; padding: 10px 25px; border-radius: 5px; margin-top: 20px; font-weight: bold; }
+    .modal-content button { background: var(--gold-gradient); color: var(--navy-dark); border: none; padding: 10px 25px; border-radius: 5px; margin-top: 20px; font-weight: bold; cursor: pointer; }
+    
+    .char-count { text-align: right; font-size: 0.8rem; color: #a0aec0; margin-top: 5px; }
   </style>
 </head>
 <body>
@@ -250,7 +255,7 @@
   <div class="back-to-top" id="backToTop" onclick="scrollToTop()">🎵</div>
 
   <form onsubmit="return validateForm(event)">
-    <img src="image.jpg" class="form-logo" alt="Logo">
+    <img src="logo.jpg" class="form-logo" alt="Band Logo">
 
     <h2>Band Royal Stars</h2>
     <p>Please fill out the form below to join or register with the band:</p>
@@ -388,7 +393,7 @@
     </div>
 
     <button type="submit" id="submit-btn">
-      <span id="btn-text">Submit Information</span>
+      <span>Submit Information</span>
     </button>
   </form>
 
@@ -401,21 +406,16 @@
   </div>
 
   <script>
-    // 1. برمجة شاشة التحميل (Loading Screen)
     window.addEventListener('load', () => {
       const loaderScreen = document.getElementById('loader-screen');
       setTimeout(() => {
         loaderScreen.classList.add('fade-out');
-      }, 2000); 
+      }, 1000); 
     });
 
-    // 2. برمجة المؤثرات الصوتية (Audio Effects)
-    const clickSound = new Audio('https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3');
-    const hoverSound = new Audio('https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3');
-    clickSound.volume = 0.3;
-    hoverSound.volume = 0.15;
-
     const cursor = document.getElementById('cursor');
+    const backToTop = document.getElementById('backToTop');
+    
     document.addEventListener('mousemove', (e) => {
       cursor.style.left = e.clientX + 'px';
       cursor.style.top = e.clientY + 'px';
@@ -435,16 +435,8 @@
 
     const interactiveElements = document.querySelectorAll('input, textarea, .select-trigger, button, .custom-option, label, .back-to-top');
     interactiveElements.forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        cursor.classList.add('grow');
-        hoverSound.currentTime = 0;
-        hoverSound.play().catch(() => {});
-      });
+      el.addEventListener('mouseenter', () => cursor.classList.add('grow'));
       el.addEventListener('mouseleave', () => cursor.classList.remove('grow'));
-      el.addEventListener('click', () => {
-        clickSound.currentTime = 0;
-        clickSound.play().catch(() => {});
-      });
     });
 
     function updateCharCount() {
@@ -459,6 +451,7 @@
     const options = document.querySelectorAll('.custom-option');
 
     trigger.addEventListener('click', () => selectWrapper.classList.toggle('open'));
+    
     options.forEach(option => {
       option.addEventListener('click', function() {
         options.forEach(opt => opt.classList.remove('selected'));
@@ -469,6 +462,13 @@
       });
     });
 
+    // إغلاق الـ dropdown إذا تم الضغط خارجه
+    document.addEventListener('click', function(e) {
+      if (!selectWrapper.contains(e.target)) {
+        selectWrapper.classList.remove('open');
+      }
+    });
+
     function toggleUploads() {
       const consent = document.getElementById('consent-files');
       document.getElementById('upload-section').style.display = consent.checked ? "block" : "none";
@@ -477,13 +477,27 @@
     function toggleMusicRole() {
       const specMusic = document.getElementById('spec-music');
       const roleInput = document.getElementById('role');
+      const roleLabel = document.getElementById('role-label');
       roleInput.disabled = !specMusic.checked;
+      roleLabel.style.color = specMusic.checked ? "#dfdfdf" : "rgba(223, 223, 223, 0.3)";
     }
 
     function updateFileName(inputId, btnId) {
-      const input = document.getElementById(inputId); const btn = document.getElementById(btnId);
-      if (input.files.length > 0) { btn.innerHTML = `🌟 ${input.files[0].name} (Selected!)`; btn.classList.add('selected'); }
+      const input = document.getElementById(inputId); 
+      const btn = document.getElementById(btnId);
+      if (input.files.length > 0) { 
+        btn.innerHTML = `🌟 ${input.files[0].name} (Selected!)`; 
+        btn.classList.add('selected'); 
+      }
     }
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    });
 
     function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
 
