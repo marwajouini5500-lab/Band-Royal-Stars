@@ -113,6 +113,16 @@
     .form-group { margin-bottom: 22px; display: flex; flex-direction: column; position: relative; }
     label { font-size: 0.9rem; color: #dfdfdf; margin-bottom: 8px; font-weight: 600; letter-spacing: 0.5px; }
 
+    ::placeholder {
+  color: #a0aec0 !important; /* lawn gris kima el photo */
+  opacity: 0.6; /* tnajem tna9as fel opacity bech tji dhabebiya chwaya */
+}
+
+/* Bech yemchi 3al browsers lkol */
+input::placeholder {
+  color: #a0aec0;
+}
+
     input[type="text"], input[type="date"], input[type="tel"], input[type="number"], input[type="url"], input[type="email"], textarea {
       background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(223, 177, 91, 0.3);
       border-radius: 8px; padding: 12px; color: #fff; font-size: 1rem;
@@ -208,17 +218,17 @@
 
     <div class="form-group">
       <label>Full Name:</label>
-      <input type="text" name="Full_Name" required>
+      <input type="text" name="Full_Name" placeholder="Enter your full name" required>
     </div>
 
     <div class="form-group">
       <label>Email Address:</label>
-      <input type="email" name="Email" required>
+      <input type="email" name="Email" placeholder="example@email.com" required>
     </div>
 
     <div class="form-group">
       <label>Date of Birth:</label>
-      <input type="date" name="DOB" required>
+      <input type="date" name="DOB" placeholder="mm/dd/yyyy" required>
     </div>
      
     <div class="form-group">
