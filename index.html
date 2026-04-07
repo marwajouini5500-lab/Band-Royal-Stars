@@ -207,22 +207,22 @@
     </div>
 
     <div class="form-group">
-      <label>Full Name: *</label>
+      <label>Full Name:</label>
       <input type="text" name="Full_Name" required>
     </div>
 
     <div class="form-group">
-      <label>Email Address: *</label>
+      <label>Email Address:</label>
       <input type="email" name="Email" required>
     </div>
 
     <div class="form-group">
-      <label>Date of Birth: *</label>
+      <label>Date of Birth:</label>
       <input type="date" name="DOB" required>
     </div>
-
+     
     <div class="form-group">
-  <label>Phone Number (8 digits): *</label>
+  <label>Phone Number (8 digits):</label>
   <div style="display: flex; gap: 10px;">
     <div style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(223, 177, 91, 0.3); border-radius: 8px; padding: 12px; color: var(--gold-main); font-weight: bold; width: 80px; text-align: center;">
       +216
@@ -232,7 +232,7 @@
 </div>
 
 <div class="form-group">
-  <label>Career Start Year: *</label>
+  <label>Career Start Year:</label>
   <input type="number" name="Career_Start" placeholder="e.g., 2020" min="1950" max="2026" required>
 </div>
 
@@ -245,9 +245,8 @@
   <label>Facebook Profile:</label>
   <input type="url" name="Facebook" placeholder="https://facebook.com/username">
 </div>
-    
     <div class="form-group">
-      <label>Home Address (State): *</label>
+      <label>Home Address (State):</label>
       <div class="custom-select-wrapper" id="customSelect">
         <div class="select-trigger" id="selectTrigger">Select your state...</div>
         <div class="custom-options">
@@ -281,7 +280,7 @@
     </div>
 
     <div class="form-group">
-      <label>Your Specialty: *</label>
+      <label>Your Specialty:</label>
       <div class="specialty-options">
         <div class="specialty-item">
           <input type="checkbox" id="spec-music" name="specialty" value="music" onchange="toggleMusicRole()">
@@ -305,25 +304,30 @@
 
     <div class="form-group consent-box">
       <input type="checkbox" id="consent-files" name="Consent" onchange="toggleUploads()" style="width: 20px; height: 20px;">
-      <label for="consent-files" style="margin-left: 10px; cursor: pointer; color: #a0aec0;">I agree to share my picture and video with Band Royal Stars. *</label>
+      <label for="consent-files" style="margin-left: 10px; cursor: pointer; color: #a0aec0;">I agree to share my picture and video with Band Royal Stars.</label>
     </div>
 
+      </div>
     <div id="upload-section" class="hidden-section">
-      <div class="form-group">
-        <label>Upload Your Picture: *</label>
-        <div class="file-upload-wrapper">
-          <div class="custom-file-btn" id="pic-btn">📸 Choose Your Picture</div>
-          <input type="file" id="picture" name="Picture" accept="image/*" onchange="updateFileName('picture', 'pic-btn')">
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Upload Video Link: *</label>
-        <input type="url" name="Video_Link" placeholder="Paste YouTube/Google Drive link here">
-      </div>
+  <div class="form-group">
+    <label>Upload Your Picture:</label>
+    <div class="file-upload-wrapper">
+      <div class="custom-file-btn" id="pic-btn">📸 Choose Your Picture</div>
+      <input type="file" id="picture" name="Picture" accept="image/*" onchange="updateFileName('picture', 'pic-btn')">
     </div>
+  </div>
+
+  <div class="form-group">
+    <label>Upload a Video showing your talent:</label>
+    <div class="file-upload-wrapper">
+      <div class="custom-file-btn" id="vid-btn">🎥 Choose Your Video</div>
+      <input type="file" id="video" name="Video" accept="video/*" onchange="updateFileName('video', 'vid-btn')">
+    </div>
+  </div>
+</div>
 
     <div class="form-group">
-      <label>Motivation: *</label>
+      <label>Motivation:</label>
       <textarea name="Motivation" rows="4" maxlength="300" placeholder="Why do you want to join?" required></textarea>
     </div>
 
@@ -411,6 +415,33 @@
       document.getElementById('successModal').style.display = 'flex';
     }
     function closeModal() { document.getElementById('successModal').style.display = 'none'; }
+
+    // Zid hatha m3a el Script mte3ek louta
+function toggleUploads() {
+  const consent = document.getElementById('consent-files');
+  const uploadSection = document.getElementById('upload-section');
+  if (consent.checked) {
+    uploadSection.style.display = "block";
+    // Nesta3mlou timeout bech el transition mte3 el opacity tekhdem
+    setTimeout(() => { uploadSection.style.opacity = "1"; }, 10);
+  } else {
+    uploadSection.style.opacity = "0";
+    // Nestannaw el transition toufa bech na3mlou display none
+    setTimeout(() => { uploadSection.style.display = "none"; }, 500);
+  }
+}
+
+// Thabbet eli el function updateFileName tekhdem lel video zeda
+function updateFileName(inputId, btnId) {
+  const input = document.getElementById(inputId);
+  const btn = document.getElementById(btnId);
+  if (input.files.length > 0) {
+    // Tawali t-affichi icon 🌟 m3a ism el file
+    btn.innerHTML = `🌟 ${input.files[0].name}`;
+    btn.style.borderColor = "#dfb15b";
+    btn.style.background = "rgba(223, 177, 91, 0.1)";
+  }
+}
   </script>
 </body>
 </html>
